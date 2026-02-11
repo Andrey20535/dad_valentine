@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Для самой любимой 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: #f6dedf;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Comfortaa, Arial, sans-serif;
+        }
+        .header {
+            text-align: center;
+            font-size: 3.2em;
+            font-weight: bold;
+            color: #a04554;
+            margin-top: 38px;
+            margin-bottom: 38px;
+        }
+
+        .surprise-center-zone {
+            width: 500px;
+            height: 570px;
+            margin: 0 auto 18px auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @media (max-width: 600px) {
+            .header {
+                font-size: 1.4em; /* Было 3.2em! */
+                padding: 0 8vw;
+                margin-top: 14px;
+                margin-bottom: 12px;
+            }
+            #invitation h2, .invitation-title {
+                font-size: 1.07em; /* делаем меньше для мобилки */
+                margin-bottom: 12px;
+            }
+        }
+            .surprise-center-zone {
+                width: 96vw;
+                height: 53vw;
+                min-height: 250px;
+            }
+            .invitation-block, #surprise-photo {
+                font-size: 1em;
+            }
+
+        #surprise-photo, #invitation {
+            position: absolute;
+            left: 0; top: 0; right: 0; bottom: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            border-radius: 28px;
+            box-shadow: 0 2px 24px #e26e9e24;
+            transition: opacity 0.7s, transform 0.7s;
+        }
+        #surprise-photo {
+            z-index: 1;
+        }
+        #surprise-photo.hide {
+            opacity: 0;
+            transform: scale(0.98);
+            pointer-events: none;
+        }
+        #invitation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #fff6f3ee;
+            font-size: 1.24em;
+            color: #9a4b60;
+            line-height: 1.52;
+            z-index: 2;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.7s, transform 0.7s;
+            text-align: center; /* центрируем текст блока */
+        }
+        #invitation.show {
+            opacity: 1;
+            transform: scale(1.01);
+            pointer-events: auto;
+        }
+        .open-btn, .accept-btn {
+            display: block;
+            margin: 34px auto 0 auto;
+            padding: 16px 44px;
+            font-size: 1.27em;
+            border-radius: 30px;
+            background: #fd6eab;
+            color: #fff;
+            border: none;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 4px 22px #e573a548;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .open-btn:hover, .accept-btn:hover {
+            background: #d45589;
+            transform: scale(1.03);
+        }
+        .accept-btn {
+            margin-top: 38px;
+            background: #ff7bb7;
+        }
+        .accept-btn:active {
+            background: #ec348c;
+        }
+        h2 {
+            margin: 0 0 18px 0;
+            font-size: 1.3em;
+            color: #a04554;
+            text-align: center;
+        }
+        .inv-text {
+            padding: 0 10px;
+            text-align: center; /* центрируем абзацы */
+        }
+        p, strong {
+            text-align: center;
+            margin: 0.5em 0;
+        }
+    </style>
+</head>
+<body>
+<div class="header">Для самой любимой 💖</div>
+<div class="surprise-center-zone">
+    <img id="surprise-photo" src="photo_together.jpg" alt="Твоя фотография">
+    <div id="invitation">
+        <div class="inv-text">
+            <h2>Приглашение на День Святого Валентина!</h2>
+            <p>Дорогая [Имя],<br>
+                Ты — самое ценное, что у меня есть.<br> Я приглашаю тебя провести со мной этот особенный вечер.</p>
+            <p>
+                <strong>Жду тебя 14 февраля в 19:00<br>
+                    [адрес, кафе, ресторан, парк и т.д.]</strong>
+            </p>
+            <p>Я люблю тебя! 💞<br>
+                Твой [Твоё имя]</p>
+        </div>
+        <button class="accept-btn" onclick="acceptInvite()">Я принимаю!</button>
+    </div>
+</div>
+<button class="open-btn" onclick="openInvitation()">Открыть приглашение</button>
+<script>
+    function openInvitation() {
+        document.getElementById('surprise-photo').classList.add('hide');
+        document.querySelector('.open-btn').style.display = 'none';
+        setTimeout(function() {
+            document.getElementById('invitation').classList.add('show');
+        }, 750);
+    }
+    function acceptInvite() {
+        alert("Ура! Ты сделала меня самым счастливым человеком! 💗");
+    }
+</script>
+</body>
+</html>
