@@ -21,14 +21,13 @@
         }
 
         .surprise-center-zone {
-            width: 500px;
-            height: 570px;
-            margin: 0 auto 18px auto;
-            position: relative;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
+            /* max-width, margin и пр. по желанию */
         }
+
         @media (max-width: 600px) {
             .header {
                 font-size: 1.4em; /* Было 3.2em! */
@@ -38,7 +37,7 @@
             }
             #invitation h2, .invitation-title {
                 font-size: 1.07em; /* делаем меньше для мобилки */
-                margin-bottom: 12px;
+                margin-top: 12vw;
             }
         }
             .surprise-center-zone {
@@ -50,7 +49,7 @@
                 font-size: 1em;
             }
 
-        #surprise-photo, #invitation {
+        #invitation {
             position: absolute;
             left: 0; top: 0; right: 0; bottom: 0;
             width: 100%; height: 100%;
@@ -58,9 +57,18 @@
             border-radius: 28px;
             box-shadow: 0 2px 24px #e26e9e24;
             transition: opacity 0.7s, transform 0.7s;
+            margin-bottom: 28px;
         }
         #surprise-photo {
-            z-index: 1;
+            display: block;
+            max-width: 420px;
+            max-height: 420px;
+            width: 100%;
+            margin: 0 auto 28px auto;
+            border-radius: 28px;
+            box-shadow: 0 2px 24px #e26e9e24;
+            object-fit: cover;
+            transition: opacity 0.7s, transform 0.7s;
         }
         #surprise-photo.hide {
             opacity: 0;
@@ -89,7 +97,7 @@
         }
         .open-btn, .accept-btn {
             display: block;
-            margin: 34px auto 0 auto;
+            margin: 28px auto 0 auto;
             padding: 16px 44px;
             font-size: 1.27em;
             border-radius: 30px;
@@ -146,8 +154,8 @@
         </div>
         <button class="accept-btn" onclick="acceptInvite()">Я принимаю!</button>
     </div>
+    <button class="open-btn" onclick="openInvitation()">Открыть приглашение</button>
 </div>
-<button class="open-btn" onclick="openInvitation()">Открыть приглашение</button>
 <script>
     function openInvitation() {
         document.getElementById('surprise-photo').classList.add('hide');
